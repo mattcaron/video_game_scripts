@@ -1,0 +1,4 @@
+#!/bin/bash
+COMPAT=/usr/local/games/lib/loki_compat
+export LD_LIBRARY_PATH=$COMPAT
+LD_ASSUME_KERNEL=2.4.28 $COMPAT/ld-linux.so.2 /usr/local/games/games/SC3U/sc3bat $@

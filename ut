@@ -1,0 +1,2 @@
+#!/bin/bash
+UT_DATA_PATH=/usr/local/games/games/ut/System /usr/local/games/games/ut/ut

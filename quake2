@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/local/apps/quake2
+./quake2 +set vid_ref softx +set _windowed_mouse 1 +exec matt.cfg

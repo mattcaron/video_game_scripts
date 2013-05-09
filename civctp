@@ -1,0 +1,6 @@
+#!/bin/bash
+pushd /tmp
+ln -s .esd-$UID .esd
+popd
+~/games/games/CivCTP/civctp
+rm /tmp/.esd

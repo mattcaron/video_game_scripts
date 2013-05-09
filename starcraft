@@ -1,0 +1,54 @@
+#!/usr/bin/perl
+
+my $home=$ENV{HOME};
+
+my $PROGRAM="$home/.wine/c/Program Files/Starcraft/StarCraft.exe";
+my $CDROM="/mnt/cdrom";
+my $KEYFILE="$CDROM/sc.ico"; #file to be sure it's the right cd
+
+my @args=@ARGV;
+my $argcnt=$#ARGV;
+&main;
+
+sub main{
+    my $arg=$args[0];
+    my $createdir=0;
+    my $copy=0;
+    my ($help,$qmark)=($arg,$arg);
+    my $mount_feedback=0;
+
+    # no args, always print help
+    if($argcnt>=0)
+    {
+	&printusage;
+    }
+
+    # this forces the drive to spin up if it was already mounted
+    system("umount $CDROM");
+    #mount the drive
+    $mount_feedback=system("mount $CDROM");
+
+    # make sure it mounted
+    if($mount_feedback==0)
+    {
+	if(-e "$CDROM/sc.ico")
+	{
+	    printf("Executing wine \"$PROGRAM\"\n");
+	    # run the program
+	    system("wine \"$PROGRAM\"");
+	    #unmount the drive when done
+	    system("umount $CDROM");
+	}
+	else
+	{
+	    print("\nError - Wrong CD in $CDROM. Aborting\n");
+	}
+    }
+    else
+    {
+	print("\nError - CD not in $CDROM. Aborting\n");
+    }
+}
+
+
+    

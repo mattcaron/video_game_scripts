@@ -1,0 +1,4 @@
+#!/bin/bash
+COMPAT=$HOME/games/lib/loki_compat
+export LD_LIBRARY_PATH=$COMPAT
+SDL_AUDIODRIVER="dsp" SDL_PATH_DSP="/dev/dsp" $COMPAT/ld-linux.so.2 ~/games/games/SC3U/sc3u.dynamic $@
